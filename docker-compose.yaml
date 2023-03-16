@@ -40,7 +40,9 @@ services:
             - DATABASE_URL=postgres://postgres:postgres@db:5432/natrium
             - REDIS_HOST=redis
             - GOPRIVATE=github.com/appditto
-            - RPC_URL=https://app.natrium.io/api
+            - RPC_URL=http://192.168.1.153:7076
+            - NODE_WS_URL=ws://192.168.1.153:7078
+            - WORK_URL=http://192.168.1.140:7076
         ports:
             - '127.0.0.1:3003:3000'
         build:
