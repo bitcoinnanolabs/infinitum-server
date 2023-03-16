@@ -54,7 +54,7 @@ func main() {
 	nanoPriceUpdate := flag.Bool("nano-price-update", false, "Update nano prices")
 	bananoPriceUpdate := flag.Bool("banano-price-update", false, "Update banano prices")
 	bananoMode := flag.Bool("banano", false, "Run in BANANO mode (Kalium)")
-	socketIoServer := flag.Bool("socket-io", false, "Run socket.io server (natrium.io/donate)")
+	socketIoServer := flag.Bool("socket-io", false, "Run socket.io server (wallet.bitcoinnano.org)")
 	version := flag.Bool("version", false, "Display the version")
 	flag.Parse()
 
