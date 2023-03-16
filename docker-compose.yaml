@@ -47,13 +47,13 @@ services:
             - '3003:3000'
         build:
             context: .
-            dockerfile: Dockerfile.dev
+            dockerfile: Dockerfile
         volumes:
             - $PWD:/app:cached
         restart: on-failure
         entrypoint: /bin/zsh
-        stdin_open: true
-        tty: true
+        # stdin_open: true
+        # tty: true
         # networks: ['app-network']
 
 # networks:
