@@ -9,10 +9,10 @@ import (
 	"os"
 	"testing"
 
-	"github.com/appditto/natrium-wallet-server/database"
-	"github.com/appditto/natrium-wallet-server/net"
-	"github.com/appditto/natrium-wallet-server/repository"
-	"github.com/appditto/natrium-wallet-server/utils/mocks"
+	"github.com/bitcoinnanolabs/infinitum-server/database"
+	"github.com/bitcoinnanolabs/infinitum-server/net"
+	"github.com/bitcoinnanolabs/infinitum-server/repository"
+	"github.com/bitcoinnanolabs/infinitum-server/utils/mocks"
 	"github.com/go-chi/chi/v5"
 	"github.com/stretchr/testify/assert"
 )

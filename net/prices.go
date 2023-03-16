@@ -9,9 +9,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/appditto/natrium-wallet-server/config"
-	"github.com/appditto/natrium-wallet-server/database"
-	"github.com/appditto/natrium-wallet-server/models"
+	"github.com/bitcoinnanolabs/infinitum-server/config"
+	"github.com/bitcoinnanolabs/infinitum-server/database"
+	"github.com/bitcoinnanolabs/infinitum-server/models"
 	"k8s.io/klog/v2"
 )
 
