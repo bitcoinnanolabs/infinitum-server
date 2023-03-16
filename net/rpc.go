@@ -140,7 +140,7 @@ func (client *RPCClient) WorkGenerate(hash string, difficultyMultiplier int) (st
 	// Don't bother deriving it since it can only be one of two values
 	difficulty := "0xfffffff000000000"
 	if difficultyMultiplier < 64 {
-		difficulty = "0x0000000000000000"
+		difficulty = "0xfffffe0000000000"
 	}
 
 	request := models.WorkGenerate{
