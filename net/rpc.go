@@ -77,7 +77,7 @@ func (client *RPCClient) MakeAccountInfoRequest(account string) (map[string]inte
 
 // This returns how many pending blocks an account has, up to 51, for anti-spam measures
 func (client *RPCClient) GetReceivableCount(account string, bananoMode bool) (int, error) {
-	threshold := "1000000000000000000000000"
+	threshold := "1000000000000000000000000000"
 	if bananoMode {
 		threshold = "1000000000000000000000000000"
 	}
@@ -128,7 +128,7 @@ func (client *RPCClient) WorkGenerate(hash string, difficultyMultiplier int) (st
 		res, err := client.BpowClient.WorkGenerate(hash, difficultyMultiplier)
 		if err != nil || res == "" {
 			klog.Infof("Error generating work with BPOW %s", err)
-			if utils.GetEnv("WORK_URL", "") == "" {
+			if utils.GetEnv("WORK_URL", "http://localhost:7076") == "" {
 				return "", err
 			}
 		}
@@ -150,8 +150,8 @@ func (client *RPCClient) WorkGenerate(hash string, difficultyMultiplier int) (st
 	}
 
 	requestBody, _ := json.Marshal(request)
-	// HTTP post
-	httpRequest, err := http.NewRequest(http.MethodPost, utils.GetEnv("WORK_URL", ""), bytes.NewBuffer(requestBody))
+
+	httpRequest, err := http.NewRequest(http.MethodPost, utils.GetEnv("WORK_URL", "http://localhost:7076"), bytes.NewBuffer(requestBody))
 	if err != nil {
 		klog.Errorf("Error making work gen request %s", err)
 		return "", err

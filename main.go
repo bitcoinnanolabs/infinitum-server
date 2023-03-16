@@ -146,7 +146,7 @@ func main() {
 	// BPoW if applicable
 	var bpowClient *gql.BpowClient
 	if utils.GetEnv("BPOW_KEY", "") != "" {
-		bpowUrl := "https://boompow.banano.cc/graphql"
+		bpowUrl := "https://boompow.bitcoinnano.org/graphql"
 		if utils.GetEnv("BPOW_URL", "") != "" {
 			bpowUrl = utils.GetEnv("BPOW_URL", "")
 		}
