@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/bitcoinnanolabs/infinitum-server/database"
-	"github.com/bitcoinnanolabs/infinitum-server/utils/mocks"
+	"github.com/appditto/natrium-wallet-server/database"
+	"github.com/appditto/natrium-wallet-server/utils/mocks"
 	"github.com/stretchr/testify/assert"
 )
 

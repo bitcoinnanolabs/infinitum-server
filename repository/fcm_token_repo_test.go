@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/bitcoinnanolabs/infinitum-server/database"
+	"github.com/appditto/natrium-wallet-server/database"
 	"github.com/stretchr/testify/assert"
 )
 

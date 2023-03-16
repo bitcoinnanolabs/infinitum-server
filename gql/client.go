@@ -6,7 +6,7 @@ import (
 	"net/http"
 
 	"github.com/Khan/genqlient/graphql"
-	"github.com/bitcoinnanolabs/infinitum-server/utils/mocks"
+	"github.com/appditto/natrium-wallet-server/utils/mocks"
 )
 
 type GQLError string
