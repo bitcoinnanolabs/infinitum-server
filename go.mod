@@ -1,4 +1,4 @@
-module github.com/bitcoinnanolabs/infinitum-server
+module github.com/appditto/natrium-wallet-server
 
 go 1.19
 

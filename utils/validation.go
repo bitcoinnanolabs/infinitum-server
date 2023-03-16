@@ -5,7 +5,7 @@ import (
 	"errors"
 	"regexp"
 
-	"github.com/bitcoinnanolabs/infinitum-server/utils/ed25519"
+	"github.com/appditto/natrium-wallet-server/utils/ed25519"
 	"golang.org/x/crypto/blake2b"
 )
 

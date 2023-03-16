@@ -6,9 +6,9 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/bitcoinnanolabs/infinitum-server/gql"
-	"github.com/bitcoinnanolabs/infinitum-server/models"
-	"github.com/bitcoinnanolabs/infinitum-server/utils"
+	"github.com/appditto/natrium-wallet-server/gql"
+	"github.com/appditto/natrium-wallet-server/models"
+	"github.com/appditto/natrium-wallet-server/utils"
 	"k8s.io/klog/v2"
 )
 
