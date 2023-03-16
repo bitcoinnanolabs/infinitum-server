@@ -47,7 +47,7 @@ services:
             - '3003:3000'
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.dev
         volumes:
             - $PWD:/app:cached
         restart: on-failure
