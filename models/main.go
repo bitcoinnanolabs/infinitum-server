@@ -1,4 +1,3 @@
-//go:generate go run github.com/Khan/genqlient
 package main
 
 import (
@@ -11,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/appleboy/go-fcm"
 	"github.com/bitcoinnanolabs/infinitum-server/controller"
 	"github.com/bitcoinnanolabs/infinitum-server/database"
 	"github.com/bitcoinnanolabs/infinitum-server/gql"
@@ -18,7 +18,6 @@ import (
 	"github.com/bitcoinnanolabs/infinitum-server/net"
 	"github.com/bitcoinnanolabs/infinitum-server/repository"
 	"github.com/bitcoinnanolabs/infinitum-server/utils"
-	"github.com/appleboy/go-fcm"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/cors"
 	"github.com/go-chi/httprate"
