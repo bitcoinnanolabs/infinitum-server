@@ -15,7 +15,7 @@ const EncodeNano = "13456789abcdefghijkmnopqrstuwxyz"
 var NanoEncoding = base32.NewEncoding(EncodeNano)
 
 const bananoRegexStr = "(?:ban)(?:_)(?:1|3)(?:[13456789abcdefghijkmnopqrstuwxyz]{59})"
-const nanoRegexStr = "(?:xrb|nano)(?:_)(?:1|3)(?:[13456789abcdefghijkmnopqrstuwxyz]{59})"
+const nanoRegexStr = "(?:xrb|btco)(?:_)(?:1|3)(?:[13456789abcdefghijkmnopqrstuwxyz]{59})"
 
 var bananoRegex = regexp.MustCompile(bananoRegexStr)
 var nanoRegex = regexp.MustCompile(nanoRegexStr)
@@ -41,13 +41,13 @@ func AddressToPub(account string) (public_key []byte, err error) {
 
 	if address[:4] == "xrb_" || address[:4] == "ban_" {
 		address = address[4:]
-	} else if address[:5] == "nano_" {
+	} else if address[:5] == "btco_" {
 		address = address[5:]
 	} else {
 		return nil, errors.New("Invalid address format")
 	}
 	// A valid nano address is 64 bytes long
-	// First 5 are simply a hard-coded string nano_ for ease of use
+	// First 5 are simply a hard-coded string btco_ for ease of use
 	// The following 52 characters form the address, and the final
 	// 8 are a checksum.
 	// They are base 32 encoded with a custom encoding.

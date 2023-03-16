@@ -138,9 +138,9 @@ func (client *RPCClient) WorkGenerate(hash string, difficultyMultiplier int) (st
 	// Base send difficulty
 	// Nano has 2 difficulties, higher for send, lower for receive
 	// Don't bother deriving it since it can only be one of two values
-	difficulty := "fffffff800000000"
+	difficulty := "0xfffffff000000000"
 	if difficultyMultiplier < 64 {
-		difficulty = "fffffe0000000000"
+		difficulty = "0x0000000000000000"
 	}
 
 	request := models.WorkGenerate{

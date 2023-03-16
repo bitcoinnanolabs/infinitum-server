@@ -204,11 +204,11 @@ func (c *Client) readPump() {
 			} else {
 				c.Currency = "USD"
 			}
-			// Force nano_ address
+			// Force btco_ address
 			if !c.Hub.BananoMode {
-				// Ensure account has nano_ address
+				// Ensure account has btco_ address
 				if strings.HasPrefix(subscribeRequest.Account, "xrb_") {
-					subscribeRequest.Account = fmt.Sprintf("nano_%s", strings.TrimPrefix(subscribeRequest.Account, "xrb_"))
+					subscribeRequest.Account = fmt.Sprintf("btco_%s", strings.TrimPrefix(subscribeRequest.Account, "xrb_"))
 				}
 			}
 
