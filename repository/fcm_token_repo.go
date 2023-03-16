@@ -3,7 +3,7 @@ package repository
 import (
 	"time"
 
-	"github.com/appditto/natrium-wallet-server/models/dbmodels"
+	"github.com/bitcoinnanolabs/infinitum-server/models/dbmodels"
 	"gorm.io/gorm"
 	"k8s.io/klog/v2"
 )

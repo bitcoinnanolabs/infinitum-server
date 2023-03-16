@@ -24,8 +24,8 @@ services:
 
     app:
         container_name: natrium_dev
-        # security_opt:
-        #     - "seccomp:unconfined"        
+        security_opt:
+            - "seccomp:unconfined"        
         environment:
             - DB_HOST=db
             - DB_PORT=5432
@@ -52,8 +52,8 @@ services:
             - $PWD:/app:cached
         restart: on-failure
         entrypoint: /bin/zsh
-        # stdin_open: true
-        # tty: true
+        stdin_open: true
+        tty: true
         # networks: ['app-network']
 
 # networks:

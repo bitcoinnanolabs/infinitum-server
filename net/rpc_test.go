@@ -5,8 +5,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/appditto/natrium-wallet-server/gql"
-	"github.com/appditto/natrium-wallet-server/utils/mocks"
+	"github.com/bitcoinnanolabs/infinitum-server/gql"
+	"github.com/bitcoinnanolabs/infinitum-server/utils/mocks"
 	"github.com/stretchr/testify/assert"
 )
 
