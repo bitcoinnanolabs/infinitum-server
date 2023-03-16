@@ -4,7 +4,7 @@ services:
         container_name: natrium_redis
         image: redis:7-alpine
         restart: unless-stopped
-        # networks: ['app-network']
+        networks: ['app-network']
 
     db:
         container_name: natrium_postgres
@@ -20,7 +20,7 @@ services:
         volumes:
             - .data/postgres:/var/lib/postgresql/data:delegated # Delegated indicates the containers view of the volume takes priority
             - ./scripts/setup_test_db.sh:/docker-entrypoint-initdb.d/setup_test_db.sh
-        # networks: ['app-network']
+        networks: ['app-network']
 
     app:
         container_name: natrium_dev
@@ -44,7 +44,7 @@ services:
             - NODE_WS_URL=ws://192.168.1.153:7078
             - WORK_URL=http://192.168.1.140:7076
         ports:
-            - '3003:3000'
+            - '127.0.0.1:3003:3000'
         build:
             context: .
             dockerfile: Dockerfile.dev
@@ -54,8 +54,8 @@ services:
         entrypoint: /bin/zsh
         stdin_open: true
         tty: true
-        # networks: ['app-network']
+        networks: ['app-network']
 
-# networks:
-#     app-network:
-#         driver: bridge
+networks:
+    app-network:
+        driver: bridge
