@@ -83,7 +83,7 @@ func NewHub(bananomode bool, rpcClient *net.RPCClient, fcmTokenRepo *repository.
 	if bananomode {
 		pricePrefix = "banano"
 	} else {
-		pricePrefix = "nano"
+		pricePrefix = "btco"
 	}
 	return &Hub{
 		Broadcast:    make(chan []byte),
