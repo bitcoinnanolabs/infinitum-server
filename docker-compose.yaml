@@ -41,7 +41,7 @@ services:
             - NODE_WS_URL=ws://192.168.1.153:7078
             - WORK_URL=http://192.168.1.140:7076
         ports:
-            - '3000:3000'
+            - '4040:3000'
         build:
             context: .
             dockerfile: Dockerfile.dev
