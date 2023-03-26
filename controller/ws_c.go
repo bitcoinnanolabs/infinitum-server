@@ -243,7 +243,7 @@ func (c *Client) readPump() {
 			if c.Hub.BananoMode {
 				// Also tag nano price
 				// response['nano'] = float(await r.app['rdata'].hget("prices", f"{self.price_prefix}-nano"))
-				priceNano, err := database.GetRedisDB().Hget("prices", fmt.Sprintf("coingecko:%s-nano", c.Hub.PricePrefix))
+				priceNano, err := database.GetRedisDB().Hget("prices", fmt.Sprintf("coingecko:%s-btco", c.Hub.PricePrefix))
 				if err != nil {
 					klog.Errorf("Error getting nano price %v", err)
 				}
