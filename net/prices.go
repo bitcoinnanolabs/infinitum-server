@@ -117,7 +117,7 @@ func UpdateNanoCoingeckoPrices() error {
 
 	usdPrice, err := database.GetRedisDB().Hget("prices", "coingecko:btco-usd")
 	if err != nil {
-		klog.Errorf("Error getting coingecko price for nano-usd %s", err)
+		klog.Errorf("Error getting coingecko price for btco-usd %s", err)
 		return err
 	}
 	usdPriceFloat, err := strconv.ParseFloat(usdPrice, 64)
@@ -127,7 +127,7 @@ func UpdateNanoCoingeckoPrices() error {
 	}
 	bolivarPrice, err := database.GetRedisDB().Hget("prices", "dolartoday:usd-ves")
 	if err != nil {
-		klog.Errorf("Error getting coingecko price for nano-usd %s", err)
+		klog.Errorf("Error getting coingecko price for btco-usd %s", err)
 		return err
 	}
 	bolivarPriceFloat, err := strconv.ParseFloat(bolivarPrice, 64)
@@ -231,16 +231,16 @@ func UpdateBananoCoingeckoPrices() error {
 	fmt.Printf("%s %f\n", "Coingecko BANANO-ARS", convertedars)
 
 	// Nano price
-	// nanoprice = float(rdata.hget("prices", "coingecko:banano-btc")) / float(rdata.hget("prices", "coingecko:nano-btc"))
+	// nanoprice = float(rdata.hget("prices", "coingecko:banano-btc")) / float(rdata.hget("prices", "coingecko:btco-btc"))
 	// rdata.hset("prices", "coingecko:banano-nano", f"{nanoprice:.16f}")
-	nanoprice, err := database.GetRedisDB().Hget("prices", "coingecko:nano-btc")
+	nanoprice, err := database.GetRedisDB().Hget("prices", "coingecko:btco-btc")
 	if err != nil {
-		klog.Errorf("Error getting price for nano-btc from redis %s", err)
+		klog.Errorf("Error getting price for btco-btc from redis %s", err)
 		return err
 	}
 	nanopriceFloat, err := strconv.ParseFloat(nanoprice, 64)
 	if err != nil {
-		klog.Errorf("Error parsing price for nano-btc from redis %s", err)
+		klog.Errorf("Error parsing price for btco-btc from redis %s", err)
 		return err
 	}
 	nanoBanPrice := cgResp.MarketData.CurrentPrice["btc"] / nanopriceFloat

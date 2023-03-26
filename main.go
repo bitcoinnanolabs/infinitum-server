@@ -51,7 +51,7 @@ func main() {
 	// 	flag.Set("v", "3")
 	// }
 	bolivarPriceUpdate := flag.Bool("bolivar-price-update", false, "Update bolivar price")
-	nanoPriceUpdate := flag.Bool("nano-price-update", false, "Update nano prices")
+	nanoPriceUpdate := flag.Bool("btco-price-update", false, "Update nano prices")
 	bananoPriceUpdate := flag.Bool("banano-price-update", false, "Update banano prices")
 	bananoMode := flag.Bool("banano", false, "Run in BANANO mode (Kalium)")
 	socketIoServer := flag.Bool("socket-io", false, "Run socket.io server (ws.bitcoinnano.org)")
