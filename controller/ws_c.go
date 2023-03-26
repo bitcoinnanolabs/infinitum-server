@@ -54,7 +54,9 @@ type Client struct {
 	mutex sync.Mutex
 }
 
-var Upgrader = websocket.Upgrader{}
+var Upgrader = websocket.Upgrader{
+	CheckOrigin: func(r *http.Request) bool { return true },
+}
 
 // Hub maintains the set of active clients and broadcasts messages to the
 // clients.
