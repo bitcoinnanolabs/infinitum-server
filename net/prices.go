@@ -99,12 +99,14 @@ func UpdateNanoCoingeckoPrices() error {
 	if err != nil {
 		return err
 	}
+	jsonResp := strings.ReplaceAll(string(rawResp), "tether", "btco")
+	jsonResp = strings.ReplaceAll(jsonResp, "usdt", "btco")
+	jsonResp = strings.ReplaceAll(jsonResp, "Tether", "btco")
 	var cgResp models.CoingeckoResponse
-	if err := json.Unmarshal(rawResp, &cgResp); err != nil {
+	if err := json.Unmarshal([]byte(jsonResp), &cgResp); err != nil {
 		klog.Errorf("Error unmarshalling coingecko response %v", err)
 		return err
 	}
-
 	for _, currency := range CurrencyList {
 		data_name := strings.ToLower(currency)
 		if val, ok := cgResp.MarketData.CurrentPrice[data_name]; ok {
@@ -245,7 +247,7 @@ func UpdateBananoCoingeckoPrices() error {
 	}
 	nanoBanPrice := cgResp.MarketData.CurrentPrice["btc"] / nanopriceFloat
 	if err := database.GetRedisDB().Hset("prices", "coingecko:banano-btco", nanoBanPrice); err != nil {
-		klog.Errorf("Error setting price for banano-btcos %s", err)
+		klog.Errorf("Error setting price for banano-btco %s", err)
 		return err
 	}
 
