@@ -247,9 +247,9 @@ func (c *Client) readPump() {
 				// response['nano'] = float(await r.app['rdata'].hget("prices", f"{self.price_prefix}-nano"))
 				priceNano, err := database.GetRedisDB().Hget("prices", fmt.Sprintf("coingecko:%s-btco", c.Hub.PricePrefix))
 				if err != nil {
-					klog.Errorf("Error getting nano price %v", err)
+					klog.Errorf("Error getting btco price %v", err)
 				}
-				accountInfo["nano"] = priceNano
+				accountInfo["btco"] = priceNano
 			}
 
 			// Tag pending count

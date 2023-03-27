@@ -94,7 +94,7 @@ func UpdateDolarSiPrice() error {
 }
 
 func UpdateNanoCoingeckoPrices() error {
-	klog.Info("Updating nano prices\n")
+	klog.Info("Updating btco prices\n")
 	rawResp, err := MakeGetRequest(config.NANO_CG_URL)
 	if err != nil {
 		return err
@@ -244,8 +244,8 @@ func UpdateBananoCoingeckoPrices() error {
 		return err
 	}
 	nanoBanPrice := cgResp.MarketData.CurrentPrice["btc"] / nanopriceFloat
-	if err := database.GetRedisDB().Hset("prices", "coingecko:banano-nano", nanoBanPrice); err != nil {
-		klog.Errorf("Error setting price for banano-nano %s", err)
+	if err := database.GetRedisDB().Hset("prices", "coingecko:banano-btco", nanoBanPrice); err != nil {
+		klog.Errorf("Error setting price for banano-btcos %s", err)
 		return err
 	}
 

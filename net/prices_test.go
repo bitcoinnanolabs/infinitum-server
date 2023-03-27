@@ -83,7 +83,7 @@ func TestUpdateNanoPrice(t *testing.T) {
 	assert.Equal(t, nil, err)
 
 	for _, v := range CurrencyList {
-		price, err := database.GetRedisDB().Hget("prices", fmt.Sprintf("coingecko:nano-%s", strings.ToLower(v)))
+		price, err := database.GetRedisDB().Hget("prices", fmt.Sprintf("coingecko:btco-%s", strings.ToLower(v)))
 		assert.Equal(t, nil, err)
 		switch v {
 		case "ARS":
@@ -185,7 +185,7 @@ func TestUpdateBananoPrice(t *testing.T) {
 
 	database.GetRedisDB().Hset("prices", "dolarsi:usd-ars", "290.00")
 	database.GetRedisDB().Hset("prices", "dolartoday:usd-ves", "8.15")
-	database.GetRedisDB().Hset("prices", "coingecko:nano-btc", "0.75")
+	database.GetRedisDB().Hset("prices", "coingecko:btco-btc", "0.75")
 	err := UpdateBananoCoingeckoPrices()
 	assert.Equal(t, nil, err)
 

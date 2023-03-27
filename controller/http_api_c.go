@@ -421,7 +421,7 @@ func (hc *HttpController) HandleHTTPCallback(w http.ResponseWriter, r *http.Requ
 			appName = "Natrium"
 			asBan, err := utils.RawToNano(sendAmount.String(), true)
 			if err != nil {
-				klog.Errorf("Error converting raw to nano %s", err)
+				klog.Errorf("Error converting raw to btco %s", err)
 				render.Status(r, http.StatusOK)
 				return
 			}

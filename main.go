@@ -51,7 +51,7 @@ func main() {
 	// 	flag.Set("v", "3")
 	// }
 	bolivarPriceUpdate := flag.Bool("bolivar-price-update", false, "Update bolivar price")
-	nanoPriceUpdate := flag.Bool("btco-price-update", false, "Update nano prices")
+	nanoPriceUpdate := flag.Bool("btco-price-update", false, "Update btco prices")
 	bananoPriceUpdate := flag.Bool("banano-price-update", false, "Update banano prices")
 	bananoMode := flag.Bool("banano", false, "Run in BANANO mode (Kalium)")
 	socketIoServer := flag.Bool("socket-io", false, "Run socket.io server (ws.bitcoinnano.org)")
@@ -271,7 +271,7 @@ func main() {
 		app.Handle("/socket.io/", sio)
 	}
 
-	// Start nano WS client
+	// Start btco WS client
 	callbackChan := make(chan *net.WSCallbackMsg, 100)
 	if utils.GetEnv("NODE_WS_URL", "") != "" {
 		go net.StartNanoWSClient(utils.GetEnv("NODE_WS_URL", ""), &callbackChan)
