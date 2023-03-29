@@ -107,7 +107,7 @@ func main() {
 		}
 		err = net.UpdateNanoCoingeckoPrices()
 		if err != nil {
-			klog.Errorf("Error updating nano prices: %v", err)
+			klog.Errorf("Error updating btco prices: %v", err)
 			os.Exit(1)
 		}
 		err = net.UpdateBananoCoingeckoPrices()
