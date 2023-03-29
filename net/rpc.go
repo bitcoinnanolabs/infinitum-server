@@ -77,7 +77,7 @@ func (client *RPCClient) MakeAccountInfoRequest(account string) (map[string]inte
 
 // This returns how many pending blocks an account has, up to 51, for anti-spam measures
 func (client *RPCClient) GetReceivableCount(account string, bananoMode bool) (int, error) {
-	threshold := "1000000000000000000000000000"
+	threshold := "1000000000000000000000000"
 	if bananoMode {
 		threshold = "1000000000000000000000000000"
 	}
@@ -128,7 +128,7 @@ func (client *RPCClient) WorkGenerate(hash string, difficultyMultiplier int) (st
 		res, err := client.BpowClient.WorkGenerate(hash, difficultyMultiplier)
 		if err != nil || res == "" {
 			klog.Infof("Error generating work with BPOW %s", err)
-			if utils.GetEnv("http://worker.bitcoinnano.org", "http://worker.bitcoinnano.org") == "" {
+			if utils.GetEnv("WORK_URL", "") == "" {
 				return "", err
 			}
 		}
@@ -138,9 +138,9 @@ func (client *RPCClient) WorkGenerate(hash string, difficultyMultiplier int) (st
 	// Base send difficulty
 	// Nano has 2 difficulties, higher for send, lower for receive
 	// Don't bother deriving it since it can only be one of two values
-	difficulty := "0xffc0000000000000"
+	difficulty := "ffc0000000000000"
 	if difficultyMultiplier < 64 {
-		difficulty = "0xfe00000000000000"
+		difficulty = "fe00000000000000"
 	}
 
 	request := models.WorkGenerate{
@@ -150,8 +150,8 @@ func (client *RPCClient) WorkGenerate(hash string, difficultyMultiplier int) (st
 	}
 
 	requestBody, _ := json.Marshal(request)
-
-	httpRequest, err := http.NewRequest(http.MethodPost, utils.GetEnv("http://worker.bitcoinnano.org", "http://worker.bitcoinnano.org"), bytes.NewBuffer(requestBody))
+	// HTTP post
+	httpRequest, err := http.NewRequest(http.MethodPost, utils.GetEnv("WORK_URL", ""), bytes.NewBuffer(requestBody))
 	if err != nil {
 		klog.Errorf("Error making work gen request %s", err)
 		return "", err
