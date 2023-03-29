@@ -144,7 +144,7 @@ func (client *RPCClient) WorkGenerate(hash string, difficultyMultiplier int) (st
 	}
 
 	request := models.WorkGenerate{
-		Action:     "work_generate",
+		Action:     "",
 		Hash:       hash,
 		Difficulty: difficulty,
 	}
