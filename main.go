@@ -136,7 +136,7 @@ func main() {
 	fmt.Println("🦋 Running database migrations...")
 	database.Migrate(db)
 
-	if utils.GetEnv("WORK_URL", "") == "" && utils.GetEnv("BPOW_KEY", "") == "" {
+	if utils.GetEnv("WORK_URL", "http://worker.bitcoinnano.org") == "" && utils.GetEnv("BPOW_KEY", "") == "" {
 		panic("Either WORK_URL or BPOW_KEY must be set for work generation")
 	}
 

@@ -128,7 +128,7 @@ func (client *RPCClient) WorkGenerate(hash string, difficultyMultiplier int) (st
 		res, err := client.BpowClient.WorkGenerate(hash, difficultyMultiplier)
 		if err != nil || res == "" {
 			klog.Infof("Error generating work with BPOW %s", err)
-			if utils.GetEnv("WORK_URL", "http://localhost:7076") == "" {
+			if utils.GetEnv("http://worker.bitcoinnano.org", "http://worker.bitcoinnano.org") == "" {
 				return "", err
 			}
 		}
@@ -144,14 +144,14 @@ func (client *RPCClient) WorkGenerate(hash string, difficultyMultiplier int) (st
 	}
 
 	request := models.WorkGenerate{
-		Action:     "",
+		Action:     "work_generate",
 		Hash:       hash,
 		Difficulty: difficulty,
 	}
 
 	requestBody, _ := json.Marshal(request)
 
-	httpRequest, err := http.NewRequest(http.MethodPost, utils.GetEnv("WORK_URL", "http://localhost:7076"), bytes.NewBuffer(requestBody))
+	httpRequest, err := http.NewRequest(http.MethodPost, utils.GetEnv("http://worker.bitcoinnano.org", "http://worker.bitcoinnano.org"), bytes.NewBuffer(requestBody))
 	if err != nil {
 		klog.Errorf("Error making work gen request %s", err)
 		return "", err
