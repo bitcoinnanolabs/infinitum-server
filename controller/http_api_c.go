@@ -418,14 +418,14 @@ func (hc *HttpController) HandleHTTPCallback(w http.ResponseWriter, r *http.Requ
 			}
 			notificationTitle = fmt.Sprintf("Received %s BANANO", strconv.FormatFloat(asBan, 'f', -1, 64))
 		} else {
-			appName = "Natrium"
+			appName = "Infinitum"
 			asBan, err := utils.RawToNano(sendAmount.String(), true)
 			if err != nil {
 				klog.Errorf("Error converting raw to btco %s", err)
 				render.Status(r, http.StatusOK)
 				return
 			}
-			notificationTitle = fmt.Sprintf("Received Ӿ%s", strconv.FormatFloat(asBan, 'f', -1, 64))
+			notificationTitle = fmt.Sprintf("Received %s BTCO", strconv.FormatFloat(asBan, 'f', -1, 64))
 		}
 		notificationBody := fmt.Sprintf("Open %s to receive this transaction.", appName)
 
