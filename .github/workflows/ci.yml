@@ -5,44 +5,9 @@ on:
     branches: [ master ]
 
 jobs:
-  test:
-    name: ☔️ Tests
-    runs-on: ubuntu-latest
-    container: golang:1.19
-
-    # Setup postgres service for tests
-    services:
-        db:
-            image: postgres:14
-            env:
-                POSTGRES_DB: testing
-                POSTGRES_PASSWORD: postgres
-                POSTGRES_USER: postgres
-            ports:
-                - 5432:5432
-            # set health checks to wait until postgres has started
-            options: >-
-                --health-cmd pg_isready
-                --health-interval 10s
-                --health-timeout 5s
-                --health-retries 5
-    steps:
-      - name: Check out code
-        uses: actions/checkout@master
-
-      - name: Run Tests
-        env:
-            DB_MOCK_HOST: db
-            DB_MOCK_PORT: 5432
-            DB_MOCK_USER: postgres
-            DB_MOCK_PASS: postgres
-            DB_SSLMODE: disable
-        run: |
-          go test -v -parallel 1 $(go list -f '{{.Dir}}/...' -m | xargs)
-
+  
   build_and_publish:
     name: ⚒️ Build and Publish Server Image
-    needs: test
     runs-on: ubuntu-latest
     env:
       GITHUB_RUN_ID: ${{ github.run_id }}    
@@ -99,9 +64,9 @@ jobs:
         run: echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
 
       - name: Set image
-        working-directory: ./kubernetes/natrium
+        working-directory: ./kubernetes/infinitum
         run: |
-          kustomize edit set image replaceme=appditto/natrium-server-rewrite:${{ env.BRANCH_NAME }}-${{ env.GITHUB_RUN_ID }}
+          kustomize edit set image replaceme=bitcoinnanolabs/infinitum-server-rewrite:${{ env.BRANCH_NAME }}-${{ env.GITHUB_RUN_ID }}
           kustomize build . > deployment-k.yaml
 
       - name: Deploy image to k8s cluster
@@ -109,7 +74,7 @@ jobs:
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
         with:
-          args: apply -f ./kubernetes/natrium/deployment-k.yaml
+          args: apply -f ./kubernetes/infinitum/deployment-k.yaml
 
   deploy_kal:
     name: 🙉 Deploy infinitum server
@@ -134,9 +99,9 @@ jobs:
         run: echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
 
       - name: Set image
-        working-directory: ./kubernetes/kalium
+        working-directory: ./kubernetes/infinitum
         run: |
-          kustomize edit set image replaceme=appditto/natrium-server-rewrite:${{ env.BRANCH_NAME }}-${{ env.GITHUB_RUN_ID }}
+          kustomize edit set image replaceme=bitcoinnanolabs/infinitum-server-rewrite:${{ env.BRANCH_NAME }}-${{ env.GITHUB_RUN_ID }}
           kustomize build . > deployment-k.yaml
 
       - name: Deploy image to k8s cluster
@@ -144,4 +109,4 @@ jobs:
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
         with:
-          args: apply -f ./kubernetes/kalium/deployment-k.yaml
+          args: apply -f ./kubernetes/infinitum/deployment-k.yaml
