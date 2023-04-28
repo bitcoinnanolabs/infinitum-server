@@ -1,15 +1,19 @@
-[![Release](https://img.shields.io/github/v/release/appditto/natrium-wallet-server)](https://github.com/bitcoinnanolabs/infinitum-server/releases/latest) ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/appditto/natrium-wallet-server) [![License](https://img.shields.io/github/license/appditto/natrium-wallet-server)](https://github.com/bitcoinnanolabs/infinitum-server/blob/master/LICENSE) [![CI](https://github.com/bitcoinnanolabs/infinitum-server/workflows/CI/badge.svg)](https://github.com/bitcoinnanolabs/infinitum-server/actions?query=workflow%3ACI)
+![CI](https://github.com/bitcoinnanolabs/infinitum-server/actions/workflows/ci.yml/badge.svg)
+[![Release](https://img.shields.io/github/v/release/bitcoinnanolabs/infinitum-server)](https://github.com/bitcoinnanolabs/infinitum-server/releases/latest) ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/appditto/natrium-wallet-server) [![License](https://img.shields.io/github/license/appditto/natrium-wallet-server)](https://github.com/bitcoinnanolabs/infinitum-server/blob/master/LICENSE)
 
-# Natrium + Kalium Server
 
-The server that powers the [Natrium](https://natrium.io) and [Kalium](https://kalium.banano.cc) applications.
 
-## What is Natrium, Kalium, NANO, BANANO?
+# Infinitum Server
+
+The server that powers the [Infinitum](https://bitcoinnano.org/pt-BR/infinitum) and [Natrium](https://natrium.io) and [Kalium](https://kalium.banano.cc) applications.
+
+## What is Infinitum,Natrium, Kalium, BTCO, NANO, BANANO?
 
 Natrium and Kalium are mobile wallets written with Flutter. NANO and BANANO are cryptocurrencies.
 
 | Link                                         | Description       |
 | :------------------------------------------- | :---------------- |
+| [bitcoinnano.org](https://bitcoinnano.org/pt-BR/infinitum)             | Infinitum Homepage  |
 | [natrium.io](https://natrium.io)             | Natrium Homepage  |
 | [kalium.banano.cc](https://kalium.banano.cc) | Kalium Homepage   |
 | [appditto.com](https://appditto.com)         | Appditto Homepage |
@@ -20,7 +24,7 @@ Natrium and Kalium are mobile wallets written with Flutter. NANO and BANANO are 
 
 Install the latest version of [GO](https://go.dev)
 
-**NANO/BANANO Node with RPC enabled.**
+**BTCO/NANO/BANANO Node with RPC enabled.**
 
 Configured by the environment variable `RPC_URL` and `NODE_WS_URL`
 
@@ -62,9 +66,9 @@ BPOW_KEY    # To use BoomPoW for work generation
 
 ## Running
 
-Compile with `go build -o natrium-server`
+Compile with `go build -o infinitum-server`
 
-Then run `./natrium-server` or `./natrium-server -banano` for banano mode.
+Then run `./infinitum-server` or `./natrium-server -banano` for banano mode.
 
 ## Work Generation
 
