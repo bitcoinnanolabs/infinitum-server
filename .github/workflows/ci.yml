@@ -63,8 +63,8 @@ jobs:
         if: success()
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKER_USER }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: ${{ secrets.DOCKERHUB_USER}}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
         if: success()
@@ -74,10 +74,10 @@ jobs:
           platforms: linux/amd64
           push: true
           file: ./Dockerfile
-          tags: appditto/natrium-server-rewrite:${{ env.BRANCH_NAME }}-${{ env.GITHUB_RUN_ID }}
+          tags: bitcoinnanolabs/infinitum-server-rewrite:${{ env.BRANCH_NAME }}-${{ env.GITHUB_RUN_ID }}
 
   deploy:
-    name: 🥳 Deploy natrium server
+    name: 🥳 Deploy infinitum server
     needs: build_and_publish
     runs-on: ubuntu-latest
     env:
@@ -112,7 +112,7 @@ jobs:
           args: apply -f ./kubernetes/natrium/deployment-k.yaml
 
   deploy_kal:
-    name: 🙉 Deploy kalium server
+    name: 🙉 Deploy infinitum server
     needs: build_and_publish
     runs-on: ubuntu-latest
     env:
